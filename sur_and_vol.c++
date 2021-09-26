@@ -175,7 +175,72 @@ float cone()
         cin >> val.h;
         cout << "Radius : ";
         cin >> val.r;
-        float sum = (1 / 3 * 22 / 7 * val.h * val.r * val.r);
+        float sum = (pi * val.h * val.r * val.r) / 3;
+        return sum;
+    }
+    else
+    {
+        cout << "Enter a valid number ";
+    }
+}
+// --------------------------------sphere----------------------------------------------------
+
+float sphere()
+{
+    int chose_underOption;
+
+    cout << "select : ";
+    cin >> chose_underOption;
+    if (chose_underOption == 1)
+    {
+        cout << "Radius : ";
+        cin >> val.r;
+        float sum = (4 * pi * val.r * val.r);
+        return sum;
+    }
+    else if (chose_underOption == 3)
+    {
+        cout << endl
+             << "Height : ";
+        cin >> val.h;
+        cout << "Radius : ";
+        cin >> val.r;
+        float sum = (pi * val.r * val.r * val.r) * 4 / 3;
+        return sum;
+    }
+    else
+    {
+        cout << "Enter a valid number ";
+    }
+}
+// --------------------------------hemisphere----------------------------------------------------
+
+float hemisphere()
+{
+    int chose_underOption;
+
+    cout << "select : ";
+    cin >> chose_underOption;
+    if (chose_underOption == 1)
+    {
+        cout << "Radius : ";
+        cin >> val.r;
+        float sum = (3 * pi * val.r * val.r);
+        return sum;
+    }
+    else if (chose_underOption == 2)
+    {
+        cout << "Radius : ";
+        cin >> val.r;
+        float sum = (2 * pi * val.r * val.r);
+        return sum;
+    }
+    else if (chose_underOption == 3)
+    {
+
+        cout << "Radius : ";
+        cin >> val.r;
+        float sum = (pi * val.r * val.r * val.r) * 2 / 3;
         return sum;
     }
     else
@@ -190,7 +255,7 @@ class chose_surfaceandVolume
 private:
     int chose_num;                                                                         //select the which shape you want to be calculet
     string shape_name[6] = {"Cuboid", "Cube", "Cylinder", "Cone", "Sphere", "Hemisphere"}; // all shape name in array
-    string contant[3] = {"1). Total Surface Area", "2). Curved Surface Area", "3). Volum"};
+    string contant[3] = {"1). Total Surface Area", "2). Curved Surface Area", "3). Volume"};
     // friend void underDisplay(void);
 
 public:
@@ -210,11 +275,7 @@ public:
 
         cout << "Enter your chose : ";
         cin >> chose_num;
-        if (chose_num > 6 || chose_num < 0)
-        {
-            cout << "Enter a valid number" << endl;
-        }
-        else
+        if (chose_num <= 6 && chose_num >= 1)
         {
             for (int i = 0; i < 6; i++)
             {
@@ -224,6 +285,10 @@ public:
                          << endl;
                 }
             }
+        }
+        else
+        {
+            cout << "Entered a valid number" << endl;
         }
         for (int i = 0; i < 3; i++)
         {
@@ -245,6 +310,14 @@ public:
         else if (chose_num == 4)
         {
             cout << cone() << endl;
+        }
+        else if (chose_num == 5)
+        {
+            cout << sphere() << endl;
+        }
+        else if (chose_num == 6)
+        {
+            cout << hemisphere() << endl;
         }
     }
 };
